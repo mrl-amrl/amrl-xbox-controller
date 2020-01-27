@@ -23,7 +23,7 @@ class XBOXController:
 
         self.rumble_controller = RumbleController(self.device)
         self.is_available = self.check_availability()
-        rospy.Service('/xbox_controller/rumble', Rumble,
+        rospy.Service(rospy.get_param('~service_name', '/xbox_controller/rumble'), Rumble,
                       self.rumble_service_handler)
 
     def rumble_service_handler(self, data):
